@@ -10,8 +10,7 @@ export interface Options extends TransformOptions { }
 export default function ceveral(options?: Options) {
 
     let i = new Ceveral();
-    var promise = i.setup();
-
+   
     return through.obj(function (chunk, _, cb) {
         let file = chunk as File;
 
@@ -59,9 +58,7 @@ export default function ceveral(options?: Options) {
                 });
         }
 
-        if (promise) {
-            return promise.then(transform).catch(cb);
-        }
+       
         transform();
 
 
